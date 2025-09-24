@@ -65,6 +65,7 @@ repo/
 ├── migrations/               # SQL DDL
 ├── deploy/                   # docker-compose & configs
 ├── docs/                     # PRD, Arch, Tasks
+├── frontend/                 # Next.js (React + Tailwind) web app
 └── Makefile
 ```
 
@@ -76,3 +77,16 @@ repo/
 - **HLS** is optional; add `transcodeworker` only when you’re ready.
 
 Happy building!
+
+## Frontend (Next.js)
+
+- Location: `frontend/`
+- Setup:
+  - `cd frontend && cp .env.local.example .env.local`
+  - Set `NEXT_PUBLIC_API_BASE_URL` to your CoreNet API, e.g. `http://localhost:8888`
+  - `npm i && npm run dev` then open `http://localhost:3000`
+- Features:
+  - List/Search files via `/search` and `/files/:fileId`
+  - Chunked upload via `/upload/init`, `/upload/chunk`, `/upload/complete`
+  - Online preview for images/videos via `/files/:fileId/preview`
+  - Delete via `DELETE /files/:fileId`
