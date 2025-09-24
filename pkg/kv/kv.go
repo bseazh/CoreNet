@@ -42,6 +42,7 @@ func NewCoreKV(path string) (*CoreKV, error) {
 	opts.WorkDir = absPath
 	opts.MemTableSize = 32 << 20
 	opts.SSTableMaxSz = 256 << 20
+	opts.ValueLogFileSize = 64 << 20
 
 	db := ckv.Open(opts)
 	if db == nil {

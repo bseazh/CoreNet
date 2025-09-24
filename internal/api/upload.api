@@ -1,32 +1,36 @@
 type InitReq {
-  Name string `json:"name"`
-  Size int64  `json:"size"`
-  Mime string `json:"mime"`
-}
-type InitResp {
-  UploadId string `json:"uploadId"`
-  ChunkSize int32 `json:"chunkSize"`
-}
-type CompleteReq {
-  UploadId string `json:"uploadId"`
-}
-type CompleteResp {
-  FileId string `json:"fileId"`
+	Name string `json:"name"`
+	Size int64  `json:"size"`
+	Mime string `json:"mime"`
 }
 
-@server(
-  group: upload
+type InitResp {
+	UploadId  string `json:"uploadId"`
+	ChunkSize int32  `json:"chunkSize"`
+}
+
+type CompleteReq {
+	UploadId string `json:"uploadId"`
+}
+
+type CompleteResp {
+	FileId string `json:"fileId"`
+}
+
+@server (
+	group: upload
 )
 service upload {
-  @handler Init
-  post /upload/init (InitReq) returns (InitResp)
+	@handler Init
+	post /upload/init (InitReq) returns (InitResp)
 
-  @handler PutChunk
-  put /upload/chunk
+	@handler PutChunk
+	put /upload/chunk
 
-  @handler Status
-  get /upload/status
+	@handler Status
+	get /upload/status
 
-  @handler Complete
-  post /upload/complete (CompleteReq) returns (CompleteResp)
+	@handler Complete
+	post /upload/complete (CompleteReq) returns (CompleteResp)
 }
+

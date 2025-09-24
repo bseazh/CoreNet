@@ -1,11 +1,12 @@
 type PreviewResp {
-  Url string `json:"url"`
+	Url string `json:"url"`
 }
 
-@server(
-  group: preview
+@server (
+	group: preview
 )
 service preview {
-  @handler GetPreview
-  get /files/:fileId/preview returns (PreviewResp)
+	@handler GetPreview
+	get /files/:fileId/preview returns (PreviewResp)
 }
+

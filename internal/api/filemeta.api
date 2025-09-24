@@ -1,19 +1,20 @@
 type FileResp {
-  FileId string `json:"fileId"`
-  Name   string `json:"name"`
-  Size   int64  `json:"size"`
-  Mime   string `json:"mime"`
-  Sha1   string `json:"sha1"`
-  Version int32 `json:"version"`
+	FileId  string `json:"fileId"`
+	Name    string `json:"name"`
+	Size    int64  `json:"size"`
+	Mime    string `json:"mime"`
+	Sha1    string `json:"sha1"`
+	Version int32  `json:"version"`
 }
 
-@server(
-  group: filemeta
+@server (
+	group: filemeta
 )
 service filemeta {
-  @handler GetFile
-  get /files/:fileId returns (FileResp)
+	@handler GetFile
+	get /files/:fileId returns (FileResp)
 
-  @handler DeleteFile
-  delete /files/:fileId
+	@handler DeleteFile
+	delete /files/:fileId
 }
+

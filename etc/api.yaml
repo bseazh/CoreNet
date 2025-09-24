@@ -1,0 +1,36 @@
+Name: corenet
+Host: 0.0.0.0
+Port: 8888
+
+MySQL:
+  DSN: root:rootpass@tcp(127.0.0.1:3306)/gopan?charset=utf8mb4&parseTime=True&loc=Local
+
+S3:
+  Endpoint: http://127.0.0.1:9000
+  Bucket: gopan
+  AccessKey: minioadmin
+  SecretKey: minioadmin
+  UseSSL: false
+  SignedURLExpireSec: 600
+
+CoreKV:
+  DataDir: ./data/corekv
+  CacheTTLSeconds: 3600
+
+Kafka:
+  Brokers: ["127.0.0.1:9092"]
+  Topics:
+    FileMetaWrite: filemeta.write.v1
+    OCRJob: ocr.jobs.v1
+    TranscodeJob: transcode.jobs.v1
+
+MinerU:
+  Endpoint: http://127.0.0.1:8080
+  TimeoutSec: 120
+
+FFmpeg:
+  BinPath: /usr/bin/ffmpeg
+  HLS:
+    SegmentSec: 6
+    ListSize: 10
+    SingleVariant: true

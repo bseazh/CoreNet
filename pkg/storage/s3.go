@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net/url"
 	"strings"
 	"time"
 
@@ -30,7 +31,19 @@ func NewMinioClient(endpoint, accessKey, secretKey, bucket string, useSSL bool) 
 		return nil, errors.New("minio bucket is required")
 	}
 
-	cli, err := minio.New(endpoint, &minio.Options{
+	endpointHost := strings.TrimSpace(endpoint)
+	if strings.Contains(endpointHost, "://") {
+		parsed, err := url.Parse(endpointHost)
+		if err != nil {
+			return nil, fmt.Errorf("parse minio endpoint: %w", err)
+		}
+		endpointHost = parsed.Host
+		if parsed.Scheme == "https" {
+			useSSL = true
+		}
+	}
+
+	cli, err := minio.New(endpointHost, &minio.Options{
 		Creds:  credentials.NewStaticV4(accessKey, secretKey, ""),
 		Secure: useSSL,
 	})

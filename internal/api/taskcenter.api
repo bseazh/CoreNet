@@ -1,19 +1,25 @@
-type CreateOCRReq { FileId string `json:"fileId"` }
-type CreateOCRResp { JobId string `json:"jobId"` }
+type CreateOCRReq {
+	FileId string `json:"fileId"`
+}
+
+type CreateOCRResp {
+	JobId string `json:"jobId"`
+}
 
 type JobResp {
-  JobId string `json:"jobId"`
-  Status string `json:"status"`
-  ResultURI string `json:"resultURI,optional"`
+	JobId     string `json:"jobId"`
+	Status    string `json:"status"`
+	ResultURI string `json:"resultURI,optional"`
 }
 
-@server(
-  group: taskcenter
+@server (
+	group: taskcenter
 )
 service taskcenter {
-  @handler CreateOCR
-  post /tasks/ocr (CreateOCRReq) returns (CreateOCRResp)
+	@handler CreateOCR
+	post /tasks/ocr (CreateOCRReq) returns (CreateOCRResp)
 
-  @handler GetJob
-  get /tasks/:jobId returns (JobResp)
+	@handler GetJob
+	get /tasks/:jobId returns (JobResp)
 }
+

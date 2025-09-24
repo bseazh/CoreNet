@@ -1,16 +1,18 @@
 type SearchResp {
-  Items []SearchItem `json:"items"`
-}
-type SearchItem {
-  FileId string `json:"fileId"`
-  Name string `json:"name"`
-  Snippet string `json:"snippet,optional"`
+	Items []SearchItem `json:"items"`
 }
 
-@server(
-  group: search
+type SearchItem {
+	FileId  string `json:"fileId"`
+	Name    string `json:"name"`
+	Snippet string `json:"snippet,optional"`
+}
+
+@server (
+	group: search
 )
 service search {
-  @handler Search
-  get /search
+	@handler Search
+	get /search
 }
+
