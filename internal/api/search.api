@@ -1,0 +1,16 @@
+type SearchResp {
+  Items []SearchItem `json:"items"`
+}
+type SearchItem {
+  FileId string `json:"fileId"`
+  Name string `json:"name"`
+  Snippet string `json:"snippet,optional"`
+}
+
+@server(
+  group: search
+)
+service search {
+  @handler Search
+  get /search
+}
