@@ -1,5 +1,5 @@
 {
-  "name": "corenet-web",
+  "name": "corenet-frontend",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -23,4 +23,3 @@
     "eslint-config-next": "14.2.5"
   }
 }
-

@@ -1,4 +1,4 @@
-# CoreNet Web (Next.js)
+# CoreNet Frontend (Next.js)
 
 A Google Drive–like frontend for CoreNet APIs built with Next.js (App Router), React, Tailwind CSS.
 
@@ -11,10 +11,10 @@ Features
 Assumptions
 - Backend base URL is `http://localhost:8888` (configurable).
 - `/upload/chunk` accepts `PUT /upload/chunk?uploadId=..&index=..` with raw body chunk.
-  Adjust in `web/lib/api.ts` if your backend differs (e.g., headers or JSON form).
+  Adjust in `frontend/lib/api.ts` if your backend differs (e.g., headers or JSON form).
 
 Getting Started
-1. cd web
+1. cd frontend
 2. Copy `.env.local.example` to `.env.local` and adjust API URL
 3. Install deps: `npm i` (or `pnpm i` / `yarn`)
 4. Run dev: `npm run dev` and open http://localhost:3000
