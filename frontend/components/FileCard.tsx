@@ -12,7 +12,10 @@ export default function FileCard({ item, onOpen, onDelete }: { item: FileCardDat
   const isImage = (item.mime || '').startsWith('image') || ['jpg','jpeg','png','gif','webp','bmp','svg'].includes(ext)
   const isVideo = (item.mime || '').startsWith('video') || ['mp4','webm','mov','mkv','avi'].includes(ext)
   return (
-    <div className="group rounded-lg border p-3 bg-white hover:shadow cursor-pointer relative">
+    <div className="group rounded-lg border p-3 bg-white hover:shadow cursor-pointer relative"
+      draggable
+      onDragStart={(e)=>{ e.dataTransfer.setData('text/plain', item.fileId) }}
+    >
       <div className="h-28 flex items-center justify-center rounded bg-gray-50 text-4xl">
         {isImage ? '🖼️' : isVideo ? '🎬' : '📄'}
       </div>
@@ -25,4 +28,3 @@ export default function FileCard({ item, onOpen, onDelete }: { item: FileCardDat
     </div>
   )
 }
-
